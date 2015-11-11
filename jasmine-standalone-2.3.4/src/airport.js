@@ -1,5 +1,5 @@
-function Airport () {
-
+function Airport (weather) {
+  this.weather = weather || new Weather();
   this._hangar = [];
 }
 
@@ -8,18 +8,18 @@ Airport.prototype.planes = function(){
 };
 
 Airport.prototype.clearForLanding = function(plane) {
-  if(this.isStormy())
+  if(this.weather.isStormy()) {
   throw new Error("Fuck it's stormy!");
-  else
+}
   this._hangar.push(plane);
 };
 
 Airport.prototype.clearForTakeOff = function(plane) {
-  if(this.isStormy())
+  if(this.weather.isStormy()){
   throw new Error("Fuck it's stormy!");
-  else
+}
   this._hangar = [];
 };
-Airport.prototype.isStormy = function(){
-  return false;
-};
+// Airport.prototype.isStormy = function(){
+//   return false;
+// };

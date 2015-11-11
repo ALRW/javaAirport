@@ -2,10 +2,13 @@ describe("Airport", function() {
 
   var airport;
   var plane;
+  var weather;
 
   beforeEach(function() {
-    airport = new Airport();
+    weather = { isStormy: function(){}};
+    airport = new Airport(weather);
     plane = jasmine.createSpy('plane');
+
   });
 
   it("starts as an empty airport", function() {
@@ -22,17 +25,17 @@ describe("Airport", function() {
     airport.clearForTakeOff(plane);
     expect(airport.planes()).toEqual([]);
   });
-  it("can check for stormy conditions", function(){
-    expect(airport.isStormy()).toBeFalsy();
-  });
+  // it("can check for stormy conditions", function(){
+  //   expect(airport.weather.isStormy()).toBeFalsy();
+  // });
   describe("under stormy conditions", function(){
     it("throws and error during takeoff", function(){
       // airport.clearForLanding(plane);
-      spyOn(airport, 'isStormy').and.returnValue(true);
+      spyOn(weather, 'isStormy').and.returnValue(true);
       expect(function(){airport.clearForTakeOff(plane);}).toThrowError("Fuck it's stormy!");
     });
     it("throws and error if landing", function(){
-      spyOn(airport, 'isStormy').and.returnValue(true);
+      spyOn(weather, 'isStormy').and.returnValue(true);
       expect(function(){airport.clearForLanding(plane);}).toThrowError("Fuck it's stormy!");
     });
   });

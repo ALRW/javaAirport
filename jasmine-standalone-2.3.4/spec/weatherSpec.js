@@ -8,10 +8,10 @@ describe("Weather", function(){
 
   it("can be stormy", function(){
     spyOn(Math, 'random').and.returnValue(0.9);
-    expect(weather.isStormy).toEqual(true);
+    expect(weather.isStormy()).toEqual(true);
   });
   it("can be clear", function(){
     spyOn(Math, 'random').and.returnValue(0.8);
-    expect(weather.isStormy).toEqual(false);
+    expect(weather.isStormy()).toEqual(false);
   });
 });
