@@ -25,4 +25,9 @@ describe(":Feature Test", function() {
     expect(function(){plane.takeOff();}).toThrowError("Fuck it's stormy!");
     expect(airport.planes()).toContain(plane);
   });
+
+  it("prevent landing when weather is stormy", function(){
+    spyOn(airport, 'isStormy').and.returnValue(true);
+    expect(function(){plane.land(airport);}).toThrowError("Fuck it's stormy!");
+  });
 });

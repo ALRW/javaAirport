@@ -8,6 +8,9 @@ Airport.prototype.planes = function(){
 };
 
 Airport.prototype.clearForLanding = function(plane) {
+  if(this.isStormy())
+  throw new Error("Fuck it's stormy!");
+  else
   this._hangar.push(plane);
 };
 

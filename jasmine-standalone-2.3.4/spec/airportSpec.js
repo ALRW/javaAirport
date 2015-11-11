@@ -31,5 +31,9 @@ describe("Airport", function() {
       spyOn(airport, 'isStormy').and.returnValue(true);
       expect(function(){airport.clearForTakeOff(plane);}).toThrowError("Fuck it's stormy!");
     });
+    it("throws and error if landing", function(){
+      spyOn(airport, 'isStormy').and.returnValue(true);
+      expect(function(){airport.clearForLanding(plane);}).toThrowError("Fuck it's stormy!");
+    });
   });
 });
