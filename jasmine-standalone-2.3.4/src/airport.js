@@ -12,5 +12,11 @@ Airport.prototype.clearForLanding = function(plane) {
 };
 
 Airport.prototype.clearForTakeOff = function(plane) {
+  if(this.isStormy())
+  throw new Error("Fuck it's stormy!");
+  else
   this._hangar = [];
+};
+Airport.prototype.isStormy = function(){
+  return false;
 };
